@@ -26,14 +26,14 @@ public class Tile : MonoBehaviour
 
 	void OnMouseDrag ()
 	{
-		transform.position = Camera_Main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x,
-            Input.mousePosition.y, Camera_Main.nearClipPlane));
+		if (!Relocated) {
+			transform.position = Camera_Main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x,
+				Input.mousePosition.y, Camera_Main.nearClipPlane));
+		}
 	}
 
 	void OnMouseUp ()
 	{
-
-
 		if (!Relocated) {
 			transform.SetParent (InitialParent);
 			transform.position = InitialPosition;
@@ -43,7 +43,7 @@ public class Tile : MonoBehaviour
 			Replacement.transform.position = InitialPosition;
 			Replacement.AddComponent<SpriteRenderer> ();
 			Replacement.GetComponent<SpriteRenderer> ().sprite = EmptySprite;
-			Replacement.transform.localScale = new Vector3 (10, 10);
+			Replacement.transform.localScale = new Vector3 (5, 5);
 			Replacement.AddComponent<ReplacementTile> ();
 
 			Relocated = false;

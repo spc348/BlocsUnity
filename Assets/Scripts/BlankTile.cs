@@ -15,9 +15,8 @@ public class BlankTile : MonoBehaviour
 		if (other.CompareTag ("Tile")) {
 			other.GetComponent<Tile> ().Relocated = true;
 			other.transform.SetParent (transform);
-			other.transform.localPosition = Vector3.zero;
 			other.transform.localScale = new Vector3 (.5f, .5f);
-			
+			other.transform.localPosition = Vector3.zero;
 		}
-	}	
+	}
 }
